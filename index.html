@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf">
+  <title>Vintage Camera Collection</title>
+  <link type="text/css" rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="app" v-cloak>
+    <h1>Vintage Camera Collection</h1>
+    <table>
+      <thead>
+        <th>Camera</th>
+        <th>Introduced</th>
+        <th>Mount</th>
+        <th>Film</th>
+        <th>Exposure</th>
+      </thead>
+      <tbody>
+        <tr v-for="(cameras, index) in cameras" :key="cameras.name" v-bind:class="{special:index===2}">
+          <td>{{cameras.camera}}</td>
+          <td>{{cameras.introduced}}</td>
+          <td>{{cameras.mount}}</td>
+          <td>{{cameras.film}}</td>
+          <td>{{cameras.exposure}}</td>
+          <td>
+            <button type="button" v-on:click="deleteCamera(cameras)">delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <form v-on:submit.prevent="addCamera">
+      <legend>Add a camera</legend>
+      <div class="form-group">
+        <label>Camera:
+          <input type="text" v-model="cameraInput" />
+        </label>
+      </div>
+      <div class="form-group">
+        <label>Introduced:
+          <input type="text" v-model="introducedInput" />
+        </label>
+      </div>
+      <div class="form-group">
+        <label>Mount:
+          <input type="text" v-model="mountInput" />
+        </label>
+      </div>
+      <div class="form-group">
+        <label>Film:
+          <input type="text" v-model="filmInput" />
+        </label>
+      </div>
+      <div class="form-group">
+        <label>Exposure:
+          <input type="text" v-model="exposureInput" />
+        </label>
+      </div>
+      <div class="form-group">
+        <label>ID:
+          <input type="text" v-model="idInput" />
+        </label>
+      </div>
+      <button type="submit" id="add">Add Camera</button>
+    </form>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
